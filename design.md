@@ -1,4 +1,4 @@
-# RUMAIO Marketplace Homepage
+# Better Space Marketplace Homepage
 
 ## Purpose
 A dense Indonesian furniture marketplace homepage for shoppers and business buyers, prioritizing product discovery, category navigation, trust, and supplier quotation enquiries.
