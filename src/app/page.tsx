@@ -55,7 +55,7 @@ export default function Home() {
   const tabbed = useMemo(() => {
     if (tab === "Produk Baru") return uniqueCatalog.filter((p) => p.isNew);
     if (tab === "Penawaran Spesial") return uniqueCatalog.filter((p) => p.oldPrice);
-    return uniqueCatalog.slice(0, 10);
+    return uniqueCatalog.filter((p) => p.rating === "4.9" && !p.image.includes("/images/products/product1.jpg")).slice(0, 10);
   }, [tab]);
   const filtered = useMemo(() => tabbed.filter((p) => p.name.toLowerCase().includes(search.toLowerCase())), [tabbed, search]);
 
