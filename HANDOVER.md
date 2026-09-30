@@ -386,16 +386,15 @@ Verified: `git ls-remote origin main` returns the expected HEAD; GitHub redirect
 
 ## Follow-up work completed (2026-09-30)
 
-### Complete furniture seed and deduplication
+### Shared catalogue reseed and deduplication
 
-- Expanded the canonical `src/lib/catalog.ts` from 19 unique existing entries to **119 unique furniture listings** across living room, bedroom, dining, office, storage, lighting, and home decor.
-- Seed taxonomy follows the established Preview 5 and Preview 7 furniture structure, while public names, copy, images, and product IDs remain local to Preview 6.
-- Removed duplicate canonical seed rows where the expansion repeated existing `luna-sofa` and `nara-sofa` entries.
-- Verified mechanically: `119 item(...)` calls and `119` unique IDs.
-- `uniqueCatalog` now merges the original catalog with the expanded seed and is used by homepage, product listing, PDP lookup, related products, header search, cart, wishlist, and category filters.
-- Avoided extending the homepage to the full catalogue: homepage merchandising remains capped at its existing curated slice; the full catalogue is available at `/products`.
-- Verified local production build and rendered interactions: `/products` showed `119 produk tersedia`; add-to-cart created one cart line; wishlist toggle created one saved card; routes `/`, `/products`, `/products/nara-sofa`, `/cart`, and `/wishlist` had no page errors and no mobile overflow at 390px.
-- Deployed production commit `e19f13f` as Vercel deployment `dpl_3uDaAmxcRT9zTqMFneayUd7CdFjz`; branded routes returned HTTP 200.
+- Replaced the prior local-image expansion with the same `furniture-catalog` seed adapter used by Preview 5 and Preview 7.
+- The canonical `src/lib/catalog.ts` now contains **100 furniture products**, with **100 unique IDs, names, and Pexels source image URLs** across living room, bedroom, dining, office, storage, lighting, and home decor.
+- The previous set reused 13 local images across 114 listings, which was the source of visibly duplicated cards despite distinct product names.
+- Preserved stable public slugs `luna-sofa` and `arka-dining`; all other records use the shared seed identity.
+- `uniqueCatalog` remains the single source for homepage, listing, PDP lookup, related products, header search, cart, wishlist, and category filters.
+- Homepage tabs are capped at 10 cards, while `/products` exposes the full 100-item seeded catalogue.
+- Local production browser QA confirmed unique names and images in every homepage tab, a clickable product card resolving to its PDP, no browser errors, and no 390px overflow.
 
 ### Remaining ecommerce scope
 

@@ -44,6 +44,9 @@ Metadata includes title and product-marketplace description. Semantic headings a
 ## Deployment
 GitHub repo `aspireomedia/rumaio-ecommerce-preview6` (renamed from `preview6-rumaio-ecommerce`), connected to the Vercel project `preview6-rumaio-ecommerce`, branded URL `preview6.aspireomedia.com`. Commits must carry the author `aspireomedia <aspireomedia@gmail.com>` or Vercel rejects the deploy.
 
+## Catalogue seeding and media
+Preview 6 now uses the shared `furniture-catalog` seed adapter that also supplies Preview 5 and Preview 7. The canonical set is 100 products with one distinct Pexels source image per product. The prior local-image expansion was removed because its small image pool caused visually repeated product cards. Remote image access is restricted to `images.pexels.com` in `next.config.ts`. Homepage recommendation tabs are capped at 10 cards while `/products` exposes the complete seeded catalogue.
+
 ## Account and order preview routes
 The Figma UI Kit surfaces now have honest preview routes: `/orders/[id]`, `/account/security`, `/register`, and `/sign-in`. These routes deliberately do not collect or persist credentials, orders, or payment data. `/account`, `/orders`, and the new routes remain presentational previews until authentication, order persistence, and payment integrations are approved.
 

@@ -7,6 +7,8 @@ import {
   ArrowRight, Building2, ChevronDown, ChevronRight, ClipboardList, CreditCard, Heart, House, Menu, PackageCheck, Search, Send, ShoppingBag, Star, Truck, UserRound, X, Music2, ShieldCheck, Headphones, Wrench, Camera, Video
 } from "lucide-react";
 import { uniqueCatalog } from "@/lib/catalog";
+
+const HOME_PRODUCT_LIMIT = 10;
 import { useStore } from "@/app/furniture/FurnitureShell";
 
 const nav = [
@@ -53,9 +55,9 @@ export default function Home() {
   const [newsletter, setNewsletter] = useState(false);
   const cartCount = store.cart.reduce((n, x) => n + x.quantity, 0);
   const tabbed = useMemo(() => {
-    if (tab === "Produk Baru") return uniqueCatalog.filter((p) => p.isNew);
-    if (tab === "Penawaran Spesial") return uniqueCatalog.filter((p) => p.oldPrice);
-    return uniqueCatalog.filter((p) => p.rating === "4.9" && !p.image.includes("/images/products/product1.jpg")).slice(0, 10);
+    if (tab === "Produk Baru") return uniqueCatalog.filter((p) => p.isNew).slice(0, HOME_PRODUCT_LIMIT);
+    if (tab === "Penawaran Spesial") return uniqueCatalog.filter((p) => p.oldPrice).slice(0, HOME_PRODUCT_LIMIT);
+    return uniqueCatalog.filter((p) => p.rating === "4.9").slice(0, HOME_PRODUCT_LIMIT);
   }, [tab]);
   const filtered = useMemo(() => tabbed.filter((p) => p.name.toLowerCase().includes(search.toLowerCase())), [tabbed, search]);
 
