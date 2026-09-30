@@ -31,6 +31,10 @@ The supplied Figma UI Kit (`0SzpXe5ng7xaKgpTk3Lhk9`) was inspected through MCP. 
 ## Architecture
 Next.js App Router, TypeScript, CSS, local public image assets, React client state for search/menu/tabs/wishlist/cart/form feedback. No database, checkout, login, CMS, or external runtime imagery.
 
+`src/lib/catalog.ts` is the single product source of truth (21 products). Every surface — homepage recommendations, catalog listing, product detail, related products, cart, wishlist, and header search — resolves products through it. The homepage previously kept a duplicate hardcoded product array, which is why its cards never linked to the detail route; that duplication was removed and the homepage now consumes the shared catalog and store.
+
+Cart and wishlist state persist in `sessionStorage`, read after mount rather than during the hydration render. Reading browser storage inside a `useState` initializer caused an SSR/client render mismatch that aborted React hydration site-wide and silently disabled every click handler; the store now initializes empty and syncs in an effect.
+
 ## Accessibility and performance
 Semantic sections, labels, live feedback, visible keyboard focus, native buttons/links, local optimized image files and responsive grids. Target no horizontal mobile overflow.
 
@@ -38,7 +42,10 @@ Semantic sections, labels, live feedback, visible keyboard focus, native buttons
 Metadata includes title and product-marketplace description. Semantic headings and descriptive image alt text.
 
 ## Deployment
-GitHub-connected Vercel deployment, branded URL `preview6.aspireomedia.com`.
+GitHub repo `aspireomedia/rumaio-ecommerce-preview6` (renamed from `preview6-rumaio-ecommerce`), connected to the Vercel project `preview6-rumaio-ecommerce`, branded URL `preview6.aspireomedia.com`. Commits must carry the author `aspireomedia <aspireomedia@gmail.com>` or Vercel rejects the deploy.
+
+## Remaining page gap
+The Figma UI Kit structure includes Order Details, Security, Register and Sign In frames that have no route yet. `/account` and `/orders` are presentational previews without auth or order backend. See `HANDOVER.md`.
 
 ## Error-state coverage
 A shared `ErrorExperience` provides Indonesian recovery screens for routing, unavailable/timeout, payment, order, inventory, cart/search, validation/rate-limit, session/role, and product-upload states. Dynamic `/status/[state]` routes make each state independently testable; App Router `not-found.tsx`, `error.tsx`, and `global-error.tsx` prevent raw framework output from reaching users. Deep teal keeps the recovery action aligned with marketplace navigation, while the warm-white card preserves the existing shopping canvas. No decorative motion is used so the state remains focused; every state plainly says whether payment occurred and supplies one primary action.
