@@ -62,6 +62,11 @@ This preview has **not** been reseeded from the shared pack (`/home/ubuntu/aspir
 - `/` is now composed exclusively through `src/app/HomeMarketplace.tsx` and imported by the root route. Its CSS is route-local (`src/app/home-marketplace.css`), so the shared storefront routes retain their existing visual treatment.
 - Target: the supplied RUMAIO marketplace reference, while retaining the Better Space name and the local catalogue. The desktop hierarchy is utility bar, commerce header, category navigation, sidebar + hero + three service cards, benefit strip, four promos, six top categories, deterministic two-banner plus 4x2 merchandising grid, B2B quote banner, ten products (5x2), services, regions, then footer.
 - Major decisions: DM Sans remains the scan-first ecommerce typeface. Teal signals actions/navigation and white grounds product scanning. The deterministic compact grids reproduce the marketplace density rather than the former editorial sizing. Local category photos and the seeded catalog supply imagery, avoiding invented assets.
+
+## Global color system (2026-09-30)
+- The official website-wide source of truth is defined in `src/app/globals.css`: primary deep teal `#27545c`, secondary dusty aqua `#97c1bc`, pearl neutral `#e2dfdc`, muted gray `#9e9d9d`, and white `#ffffff`.
+- Semantic aliases preserve existing layouts and component APIs: `--color-primary`, `--color-secondary`, `--color-neutral-light`, `--color-neutral-muted`, `--color-surface`, alongside mapped legacy aliases (`--slate`, `--dusty`, `--teal`, `--aqua`, etc.). This is intentionally a color-only migration across homepage and all storefront routes, not a structural redesign.
+- Deep teal provides reliable text/action contrast, dusty aqua marks secondary/focus affordances, pearl provides quiet separation surfaces, and muted gray is reserved for secondary text. Natural furniture/image colors are not recolored.
 - Dials: ENERGY 2 / RHYTHM 2 / MOTION 1. Only functional hover/menu feedback is used; no decorative looping motion.
 - Every homepage action either goes to an existing product/category route, scrolls to an existing section, opens/closes the mobile menu, changes product tabs, adds to cart/wishlist, or provides inline form confirmation.
 
