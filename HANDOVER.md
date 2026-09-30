@@ -53,8 +53,12 @@ Verified with Playwright against a real production build (`next build` + `next s
 | `/products/[id]` | OK | 21 product detail pages, all reachable |
 | `/cart` | OK | Reads shared cart store |
 | `/wishlist` | OK | Reads shared wishlist store |
-| `/account` | Partial | Profile stub + link to orders. No real auth. |
-| `/orders` | Partial | Empty-state only. No order detail route. |
+| `/account` | Preview | Profile, security, orders, and sign-in destinations are available without real auth. |
+| `/orders` | Preview | Empty-state with link to order-detail preview. No order backend. |
+| `/orders/[id]` | Preview | Cart-backed order summary when session cart has items, otherwise honest empty state. |
+| `/account/security` | Preview | Disabled security fields with explicit no-auth disclaimer. |
+| `/register` | Preview | Registration UI with explicit no-persistence disclaimer. |
+| `/sign-in` | Preview | Sign-in UI with explicit no-auth disclaimer. |
 | `/status/[state]` | OK | 9 error-state demos |
 
 ### Click-through suite — 11/11 pass with zero console/page errors

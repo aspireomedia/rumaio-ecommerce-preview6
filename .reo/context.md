@@ -4,6 +4,6 @@ Catalog details: src/lib/catalog.ts has 19 original unique entries plus 100 expa
 
 QA recipe: use npm run lint && npx tsc --noEmit && npm run build, then PORT=3004 npm run start. Do not use next dev for QA because sandbox HMR can block hydration. Local rendered QA passed all of /, /products, /products/nara-sofa, /cart, /wishlist at 390px, with add-to-cart creating one cart line, wishlist creating one saved card, and no page errors.
 
-Remaining: four Figma-UI-Kit pages have no route yet: Order Detail (/orders/[id]), Security, Register, Sign In. Account/orders/payment remain presentational preview states. Homepage has placeholder #footer social links. Full detail is in HANDOVER.md.
+Remaining: authentication, order persistence, payment, and inventory integrations are not implemented. Honest preview routes now exist for Order Detail (/orders/[id]), Security (/account/security), Register (/register), and Sign In (/sign-in). Homepage has placeholder #footer social links. Full detail is in HANDOVER.md.
 
 Delivery: GitHub repo aspireomedia/rumaio-ecommerce-preview6; latest commit e19f13f; Vercel deployment dpl_3uDaAmxcRT9zTqMFneayUd7CdFjz; branded URL https://preview6.aspireomedia.com.

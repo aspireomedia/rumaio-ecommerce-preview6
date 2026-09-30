@@ -44,8 +44,8 @@ Metadata includes title and product-marketplace description. Semantic headings a
 ## Deployment
 GitHub repo `aspireomedia/rumaio-ecommerce-preview6` (renamed from `preview6-rumaio-ecommerce`), connected to the Vercel project `preview6-rumaio-ecommerce`, branded URL `preview6.aspireomedia.com`. Commits must carry the author `aspireomedia <aspireomedia@gmail.com>` or Vercel rejects the deploy.
 
-## Remaining page gap
-The Figma UI Kit structure includes Order Details, Security, Register and Sign In frames that have no route yet. `/account` and `/orders` are presentational previews without auth or order backend. See `HANDOVER.md`.
+## Account and order preview routes
+The Figma UI Kit surfaces now have honest preview routes: `/orders/[id]`, `/account/security`, `/register`, and `/sign-in`. These routes deliberately do not collect or persist credentials, orders, or payment data. `/account`, `/orders`, and the new routes remain presentational previews until authentication, order persistence, and payment integrations are approved.
 
 ## Error-state coverage
 A shared `ErrorExperience` provides Indonesian recovery screens for routing, unavailable/timeout, payment, order, inventory, cart/search, validation/rate-limit, session/role, and product-upload states. Dynamic `/status/[state]` routes make each state independently testable; App Router `not-found.tsx`, `error.tsx`, and `global-error.tsx` prevent raw framework output from reaching users. Deep teal keeps the recovery action aligned with marketplace navigation, while the warm-white card preserves the existing shopping canvas. No decorative motion is used so the state remains focused; every state plainly says whether payment occurred and supplies one primary action.
