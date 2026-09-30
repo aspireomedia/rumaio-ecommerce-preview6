@@ -1,0 +1,5 @@
+"use client";
+import Link from "next/link";
+import { UserRoundPlus } from "lucide-react";
+import { PageTitle, StoreFooter, StoreHeader, useStore } from "@/app/furniture/FurnitureShell";
+export default function RegisterPage(){const store=useStore();return <><StoreHeader store={store}/><PageTitle kicker="AKUN SAYA" title="Buat akun Better Space"/><main className="store-shell form-page"><section className="form-card"><UserRoundPlus size={28}/><h2>Daftar akun</h2><p>Form ini menampilkan alur UI saja. Pembuatan akun produksi belum diaktifkan.</p><label>Nama lengkap<input placeholder="Nama Anda"/></label><label>Email<input type="email" placeholder="email@example.com"/></label><label>Kata sandi<input type="password" placeholder="Minimal 8 karakter"/></label><button onClick={()=>store.setNotice('Pendaftaran belum tersedia pada preview ini.')}>Buat akun</button><p>Sudah punya akun? <Link href="/sign-in">Masuk ke akun</Link></p></section></main><StoreFooter/></>}
