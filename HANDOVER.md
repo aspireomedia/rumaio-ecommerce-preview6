@@ -378,3 +378,22 @@ Verified: `git ls-remote origin main` returns the expected HEAD; GitHub redirect
 4. Build the four missing pages in §6.1, starting with Order Detail (`/orders/[id]`), reusing `FurnitureShell` components and the existing teal tokens. Screenshot desktop + mobile before reporting done.
 5. Update `design.md` and `.reo/context.md` when the page set changes.
 6. Never commit with an author other than `aspireomedia <aspireomedia@gmail.com>`.
+
+
+## Follow-up work completed (2026-09-30)
+
+- Added `uniqueCatalog`, a canonical ID-deduped view of the shared catalog. Homepage, catalogue, wishlist, related products, cart lookup, and header search now use the canonical view where listing duplication matters.
+- Added URL-backed category filtering on `/products?category=...`, sorting by featured/rating/price, visible result count, and an honest empty state. Wrapped `useSearchParams` in `Suspense` so the production build remains valid.
+- Added a visible wishlist empty-state link to the catalogue and `aria-pressed` to wishlist controls.
+- Preserved all furniture listing names/images as Better Space originals; no Figma product names or images were introduced.
+- Verified with `npm run lint`, `npx tsc --noEmit`, `npm run build`, and a local production server on port 3004: all seven routes had zero console/page errors, mobile `scrollWidth === clientWidth`, homepage product click opened `/products/luna-sofa`, add-to-cart produced one cart line, and wishlist toggle produced one wishlist card.
+- Deployed production again after the follow-up fixes.
+- Latest commits: `694b28a` (canonical catalogue and catalogue controls) and `db0c169` (canonical cart/search lookups).
+- Latest Vercel deployment: `dpl_FUbz7N2d4Rtb6cEom4TBqHy9Cfne`; branded URL remains `https://preview6.aspireomedia.com`.
+
+### Remaining product scope
+
+- `/account` and `/orders` remain honest preview states, not authentication or order persistence.
+- Checkout remains a preview notice; no payment/order backend exists.
+- Order detail, sign-in, register, and security routes from the reference UI kit are still not implemented.
+- Production live browser click verification was limited by the browser-harness daemon being unavailable in this session; HTTP 200 and the full local production click-through are verified.
