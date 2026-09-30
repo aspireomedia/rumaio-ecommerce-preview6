@@ -58,6 +58,13 @@ The homepage recommendations grid is driven by `tabbed` in `src/app/page.tsx`: "
 
 This preview has **not** been reseeded from the shared pack (`/home/ubuntu/aspireomedia/furniture-catalog/`). It still carries the old hand-authored 21-product catalogue with local imagery, and 15 of those 21 products share a photo with another product (7 duplicate image groups — e.g. `luna-sofa`/`nara-sofa` both use `products/product1.jpg`, `lento-desk`/`niko-desk`/`arli-lamp` all use `products/product4.jpg`). That is the reported "different names, same image" defect, still open here. Reseeding from `out/preview6-products.ts` (100 products, distinct Pexels photos) is the fix. It also means the badge-dependent tabs are thin: only 1 item is `isNew` and 2 carry `oldPrice`, so those tabs currently render a near-empty grid.
 
+## Homepage reconstruction (2026-09-30)
+- `/` is now composed exclusively through `src/app/HomeMarketplace.tsx` and imported by the root route. Its CSS is route-local (`src/app/home-marketplace.css`), so the shared storefront routes retain their existing visual treatment.
+- Target: the supplied RUMAIO marketplace reference, while retaining the Better Space name and the local catalogue. The desktop hierarchy is utility bar, commerce header, category navigation, sidebar + hero + three service cards, benefit strip, four promos, six top categories, deterministic two-banner plus 4x2 merchandising grid, B2B quote banner, ten products (5x2), services, regions, then footer.
+- Major decisions: DM Sans remains the scan-first ecommerce typeface. Teal signals actions/navigation and white grounds product scanning. The deterministic compact grids reproduce the marketplace density rather than the former editorial sizing. Local category photos and the seeded catalog supply imagery, avoiding invented assets.
+- Dials: ENERGY 2 / RHYTHM 2 / MOTION 1. Only functional hover/menu feedback is used; no decorative looping motion.
+- Every homepage action either goes to an existing product/category route, scrolls to an existing section, opens/closes the mobile menu, changes product tabs, adds to cart/wishlist, or provides inline form confirmation.
+
 ## Exclusions
 No authentication, payment processing, inventory, order tracking backend, or actual supplier CRM submission. Error routes demonstrate the UX contract only and do not claim that these integrations exist.
 

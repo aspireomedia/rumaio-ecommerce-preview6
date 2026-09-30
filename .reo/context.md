@@ -4,6 +4,6 @@ Homepage recommendations are capped at 10 cards per tab. Local rendered QA verif
 
 QA recipe: use npm run lint && npx tsc --noEmit && npm run build, then PORT=3004 npm run start. Do not use next dev for QA because sandbox HMR can block hydration. Reseed QA passed production build, clickable card to PDP, 390px no-overflow, and zero browser console/page errors.
 
-Remaining: authentication, order persistence, payment, and inventory integrations are not implemented. Honest preview routes exist for Order Detail (`/orders/[id]`), Security (`/account/security`), Register (`/register`), and Sign In (`/sign-in`). Homepage has placeholder #footer social links. Full detail is in HANDOVER.md.
+Homepage rebuilt on 2026-09-30 as a scoped RUMAIO reference reconstruction: `/` now uses `HomeMarketplace.tsx` and `home-marketplace.css` only. Existing storefront routes are not styled through those files. Desktop QA must assert: 4 promos, 6 top categories, 2 collection banners + 8 4x2 tiles, 10 recommendations (5x2), 4 services, 6 supplier regions. Production build QA uses `PORT=3004 npm run start`; never `next dev`. Remaining: authentication, order persistence, payment, and inventory integrations are not implemented. Honest preview routes exist for Order Detail (`/orders/[id]`), Security (`/account/security`), Register (`/register`), and Sign In (`/sign-in`). Full detail is in HANDOVER.md.
 
 Delivery: GitHub repo aspireomedia/rumaio-ecommerce-preview6; branded URL https://preview6.aspireomedia.com.
