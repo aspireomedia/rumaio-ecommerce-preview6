@@ -50,6 +50,11 @@ The Figma UI Kit structure includes Order Details, Security, Register and Sign I
 ## Error-state coverage
 A shared `ErrorExperience` provides Indonesian recovery screens for routing, unavailable/timeout, payment, order, inventory, cart/search, validation/rate-limit, session/role, and product-upload states. Dynamic `/status/[state]` routes make each state independently testable; App Router `not-found.tsx`, `error.tsx`, and `global-error.tsx` prevent raw framework output from reaching users. Deep teal keeps the recovery action aligned with marketplace navigation, while the warm-white card preserves the existing shopping canvas. No decorative motion is used so the state remains focused; every state plainly says whether payment occurred and supplies one primary action.
 
+## Homepage merchandising and catalogue state
+The homepage recommendations grid is driven by `tabbed` in `src/app/page.tsx`: "Terlaris" renders `catalog.slice(0, 10)`, while "Produk Baru" (`isNew`) and "Penawaran Spesial" (`oldPrice`) filter the catalog **without any cap**. Those caps are placeholders, not merchandising rules — there is no sales or popularity data yet. The default tab's 10 and the filtered tabs' sizes must be revisited as the catalogue populates, and a filtered tab must be capped too. Temporary options: a hand-curated product ID list (the pattern preview7 uses), badge-driven selection, or room-balanced selection.
+
+This preview has **not** been reseeded from the shared pack (`/home/ubuntu/aspireomedia/furniture-catalog/`). It still carries the old hand-authored 21-product catalogue with local imagery, and 15 of those 21 products share a photo with another product (7 duplicate image groups — e.g. `luna-sofa`/`nara-sofa` both use `products/product1.jpg`, `lento-desk`/`niko-desk`/`arli-lamp` all use `products/product4.jpg`). That is the reported "different names, same image" defect, still open here. Reseeding from `out/preview6-products.ts` (100 products, distinct Pexels photos) is the fix. It also means the badge-dependent tabs are thin: only 1 item is `isNew` and 2 carry `oldPrice`, so those tabs currently render a near-empty grid.
+
 ## Exclusions
 No authentication, payment processing, inventory, order tracking backend, or actual supplier CRM submission. Error routes demonstrate the UX contract only and do not claim that these integrations exist.
 
