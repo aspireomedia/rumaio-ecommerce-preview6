@@ -6,7 +6,7 @@ import { useMemo, useState } from "react";
 import {
   ArrowRight, Building2, ChevronDown, ChevronRight, ClipboardList, CreditCard, Heart, House, Menu, PackageCheck, Search, Send, ShoppingBag, Star, Truck, UserRound, X, Music2, ShieldCheck, Headphones, Wrench, Camera, Video
 } from "lucide-react";
-import { catalog } from "@/lib/catalog";
+import { uniqueCatalog } from "@/lib/catalog";
 import { useStore } from "@/app/furniture/FurnitureShell";
 
 const nav = [
@@ -53,9 +53,9 @@ export default function Home() {
   const [newsletter, setNewsletter] = useState(false);
   const cartCount = store.cart.reduce((n, x) => n + x.quantity, 0);
   const tabbed = useMemo(() => {
-    if (tab === "Produk Baru") return catalog.filter((p) => p.isNew);
-    if (tab === "Penawaran Spesial") return catalog.filter((p) => p.oldPrice);
-    return catalog.slice(0, 10);
+    if (tab === "Produk Baru") return uniqueCatalog.filter((p) => p.isNew);
+    if (tab === "Penawaran Spesial") return uniqueCatalog.filter((p) => p.oldPrice);
+    return uniqueCatalog.slice(0, 10);
   }, [tab]);
   const filtered = useMemo(() => tabbed.filter((p) => p.name.toLowerCase().includes(search.toLowerCase())), [tabbed, search]);
 

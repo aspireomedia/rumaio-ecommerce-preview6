@@ -24,6 +24,7 @@ export const catalog: Product[] = [
  item('sora-rug','Sora Karpet 160 x 230 cm','Dekorasi Rumah','rug','Rp 1.299.000','/images/products/product10.jpg','Karpet lembut bernuansa netral untuk menyatukan komposisi ruang keluarga atau kamar tidur.',['160 x 230 cm','Tebal 12 mm'],'Polyester woven',['Ivory','Abu muda'],'4.8','39'),
  item('arli-lamp','Arli Lampu Meja','Pencahayaan','table-lamp','Rp 899.000','/images/products/product4.jpg','Lampu meja dengan cahaya hangat untuk sudut baca dan meja samping tempat tidur.',['Diameter 22 cm','Tinggi 48 cm'],'Metal dan kain',['Krem','Putih'],'4.7','53')
 ];
-export const productById=(id:string)=>catalog.find((p)=>p.id===id);
-export const relatedProducts=(product:Product)=>catalog.filter((p)=>p.relatedGroup===product.relatedGroup&&p.id!==product.id).slice(0,4);
+export const uniqueCatalog = Array.from(new Map(catalog.map((product)=>[product.id,product])).values());
+export const productById=(id:string)=>uniqueCatalog.find((p)=>p.id===id);
+export const relatedProducts=(product:Product)=>uniqueCatalog.filter((p)=>p.relatedGroup===product.relatedGroup&&p.id!==product.id).slice(0,4);
 export const categories=['Ruang Tamu','Kamar Tidur','Ruang Makan','Ruang Kerja','Penyimpanan','Pencahayaan','Dekorasi Rumah'];
