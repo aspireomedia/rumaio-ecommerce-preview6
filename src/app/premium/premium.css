@@ -293,7 +293,9 @@
 .premium-home-faq-head > a { display: inline-flex; align-items: center; gap: 7px; color: var(--premium-primary); font-weight: 800; }
 .premium-promo-section { padding: 72px 0; }
 .premium-promo-stack { display: grid; gap: 18px; }
-.premium-wide-promo { position: relative; display: block; height: 220px; overflow: hidden; color: var(--premium-neutral-light); }
+.premium-wide-promo { position: relative; display: block; height: 220px; overflow: hidden; color: #ffffff; }
+.premium-wide-promo p,
+.premium-wide-promo h2 { color: #ffffff; text-shadow: 0 1px 2px rgb(0 0 0 / .55); }
 .premium-wide-promo img { object-fit: cover; transition: transform .4s ease; }
 .premium-wide-promo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgb(39 84 92 / .92), rgb(39 84 92 / .42), transparent); }
 .premium-wide-promo:hover img { transform: scale(1.025); }
