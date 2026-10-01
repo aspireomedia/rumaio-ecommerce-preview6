@@ -105,7 +105,7 @@
 .premium-craft-stats p { margin: 8px 0 0; font-weight: 600; font-size: 14px; }
 
 /* Footer */
-.premium-footer { background: #16302f; color: #d6e3e0; }
+.premium-footer { background: var(--premium-primary); color: #d6e3e0; }
 .premium-footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.3fr; gap: 40px; padding: 56px 0 36px; }
 .premium-footer-grid p { color: #a6bab7; font-size: 13px; line-height: 1.7; max-width: 280px; }
 .premium-footer-grid h3 { margin: 0 0 16px; font-size: 13px; letter-spacing: .06em; text-transform: uppercase; color: #eef3f2; }
@@ -372,8 +372,11 @@
 
 /* Premium room listing: range text + page-size selector + pagination (premium palette) */
 .premium-listing-toolbar{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:26px;color:var(--premium-muted);font-size:13px}
+.premium-listing-toolbar-controls{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.premium-listing-toolbar-controls label{display:inline-flex;align-items:center;gap:8px;color:var(--premium-muted);font-size:13px}
 .premium-listing-toolbar .page-size-select{display:inline-flex;align-items:center;gap:8px;color:var(--premium-muted);font-size:13px}
 .premium-listing-toolbar .page-size-select select{border:1px solid var(--premium-line);background:var(--premium-surface);padding:.5rem .7rem;color:var(--premium-ink);font-size:13px}
+.premium-listing-toolbar .sort-control select{border:1px solid var(--premium-line);background:var(--premium-surface);padding:.5rem .7rem;color:var(--premium-ink);font-size:13px}
 .premium-pagination{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:42px;flex-wrap:wrap}
 .premium-pagination .pagination-prev,.premium-pagination .pagination-next{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--premium-line);background:var(--premium-surface);color:var(--premium-primary);padding:.6rem .95rem;font-size:12px;font-weight:700}
 .premium-pagination .pagination-prev:disabled,.premium-pagination .pagination-next:disabled{opacity:.4;cursor:not-allowed}
