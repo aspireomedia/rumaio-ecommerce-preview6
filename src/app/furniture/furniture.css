@@ -7,7 +7,7 @@
 /* Standard marketplace visibility repair: keep CTA content legible and aligned. */
 .catalog-card{display:flex;flex-direction:column;min-height:100%}
 .catalog-copy{display:flex;flex:1;min-height:0;flex-direction:column}
-.catalog-copy .catalog-add{min-height:40px;margin-top:auto;color:var(--color-neutral-light);background:var(--color-primary);line-height:1.2}
+.catalog-copy .catalog-add{min-height:40px;margin-top:auto;color:var(--color-neutral-light);background:var(--color-primary);line-height:1.2;transition:background-color .2s,color .2s}.catalog-copy .catalog-add.is-added,.detail-actions button.is-added{background:var(--color-secondary);color:var(--color-primary)}.catalog-copy .catalog-add:disabled,.detail-actions button:disabled{cursor:default}
 .catalog-add svg{color:var(--color-neutral-light);flex:0 0 auto}
 .detail-actions button,.summary button,.form-card button,.order-summary button{min-height:44px;color:var(--color-neutral-light);background:var(--color-primary);line-height:1.2}
 .detail-actions button svg,.summary button svg{color:var(--color-neutral-light);flex:0 0 auto}

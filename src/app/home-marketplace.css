@@ -21,8 +21,8 @@
 .market-quote form{background:#ffffff;color:var(--color-primary)}
 .market-quote form button{min-height:34px;color:var(--color-neutral-light);background:var(--color-primary);font-weight:800}
 .market-quote output{color:var(--color-primary)}
-.market-add{background:var(--color-primary);color:var(--color-neutral-light)}
-.market-add svg{color:var(--color-neutral-light);stroke-width:2.4}
+.market-add{background:var(--color-primary);color:var(--color-neutral-light);transition:background-color .2s,color .2s}.market-add.is-added{background:var(--color-secondary);color:var(--color-primary)}.market-add:disabled{cursor:default}
+.market-add svg{color:var(--color-neutral-light);stroke-width:2.4}.market-add .cart-default-label,.market-add .cart-feedback-label{display:none}
 .market-extra{background:var(--color-neutral-light)}
 .market-extra>.market-shell>div:last-child{background:var(--color-neutral-light);border-color:var(--color-primary)}
 .market-extra article{background:var(--color-neutral-light);border-color:var(--color-primary)}

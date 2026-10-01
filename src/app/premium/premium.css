@@ -84,7 +84,7 @@
 .premium-card-price { display: flex; align-items: baseline; gap: 10px; margin-bottom: 12px; flex-wrap: wrap; min-width: 0; }
 .premium-card-price strong { font-size: 16px; color: var(--premium-primary); white-space: nowrap; }
 .premium-card-price del { color: var(--premium-muted); font-size: 12px; white-space: nowrap; }
-.premium-card-add { width: 100%; border: 1px solid var(--premium-primary); background: transparent; color: var(--premium-primary); padding: 11px; font-size: 13px; font-weight: 700; }
+.premium-card-add { width: 100%; border: 1px solid var(--premium-primary); background: transparent; color: var(--premium-primary); padding: 11px; font-size: 13px; font-weight: 700; transition: background-color .2s, color .2s; }.premium-card-add.is-added,.premium-pdp-card .cta-add.is-added{background:var(--premium-secondary);border-color:var(--premium-secondary);color:var(--premium-primary)}
 .premium-card-add:hover { background: var(--premium-primary); color: #fff; }
 
 /* Shop the look */
