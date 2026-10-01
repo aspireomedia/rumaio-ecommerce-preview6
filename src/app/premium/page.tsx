@@ -85,15 +85,6 @@ export default function PremiumHome() {
           </div>
         </section>
 
-        <section className="premium-section tight">
-          <div className="premium-shell">
-            <div className="premium-section-head"><h2 className="premium-serif">Pilihan Unggulan</h2></div>
-            <div className="premium-products">
-              {featured.map((p) => <PremiumProductCard key={p.id} product={p} store={store} />)}
-            </div>
-          </div>
-        </section>
-
         <section className="premium-promo-section">
           <div className="premium-shell premium-promo-stack">
             {promos.map((promo) => (
@@ -102,6 +93,15 @@ export default function PremiumHome() {
                 <div><p>{promo.kicker}</p><h2 className="premium-serif">{promo.title}</h2></div>
               </Link>
             ))}
+          </div>
+        </section>
+
+        <section className="premium-section tight">
+          <div className="premium-shell">
+            <div className="premium-section-head"><h2 className="premium-serif">Pilihan Unggulan</h2></div>
+            <div className="premium-products">
+              {featured.map((p) => <PremiumProductCard key={p.id} product={p} store={store} />)}
+            </div>
           </div>
         </section>
 

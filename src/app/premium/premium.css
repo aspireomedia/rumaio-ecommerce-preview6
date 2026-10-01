@@ -311,7 +311,7 @@
 .premium-essence-line i { padding: 0 7px; font-style: normal; color: var(--premium-secondary); }
 .premium-philosophy strong { color: var(--premium-secondary); font-size: 16px; }
 .premium-craft h2 { margin: 0 0 18px; font-size: 32px; }
-.premium-home-faq { background: var(--premium-secondary); color: var(--premium-primary); }
+.premium-home-faq { background: #ffffff; color: var(--premium-primary); }
 .premium-home-faq-head { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 32px; }
 .premium-home-faq-head h2 { margin: 0; font-size: clamp(30px, 3.2vw, 42px); }
 .premium-home-faq-list { border-top: 1px solid var(--premium-primary); }
