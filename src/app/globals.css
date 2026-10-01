@@ -3,7 +3,14 @@
 
 :root { --teal:var(--color-primary); --teal-dark:var(--color-primary); --aqua:var(--color-secondary); --ink:var(--color-ink); --muted:var(--color-muted); --line:var(--color-neutral-light); --paper:var(--color-surface); --soft:var(--color-neutral-light); --accent:var(--color-primary); }
 * { box-sizing:border-box; }
-html { scroll-behavior:smooth; }
+html {
+  scroll-behavior:smooth;
+  /* Bottom-overscroll / rubber-band fix: the root layer behind the document must match
+     this storefront's footer, otherwise the UA default (white) is exposed below it.
+     Root canvas only — body and every page section keep their own backgrounds. */
+  background-color:var(--page-overscroll-bg, #27545c);
+  overscroll-behavior-y:none;
+}
 body { margin:0; color:var(--ink); background:var(--paper); font-family:var(--font-sans),Arial,sans-serif; font-size:14px; }
 a { color:inherit; text-decoration:none; }
 button,input,textarea,select { font:inherit; }

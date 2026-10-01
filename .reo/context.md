@@ -13,3 +13,15 @@ Product-listing pagination (2026-10-01). J Kal's standing rule: any page/section
 Production build QA uses `PORT=3004 npm run start`; never `next dev`. Remaining: authentication, order persistence, payment, and inventory integrations are not implemented on either storefront.
 
 Delivery: GitHub repo aspireomedia/rumaio-ecommerce-preview6; branded URL https://preview6.aspireomedia.com.
+
+## Page-shell / overscroll root background (2026-10)
+Bottom overscroll exposed the UA default white below the footer because `html` had no background. Fixed by pinning the root canvas to the storefront footer colour:
+
+- `globals.css`: `html { background-color:var(--page-overscroll-bg, #27545c); overscroll-behavior-y:none; }`
+- `body` untouched → no page section recoloured.
+- Per-route override for premium: `src/app/premium/layout.tsx` injects `:root{--page-overscroll-bg:#27545c}`.
+  NOTE: the visible premium footer resolves to `--premium-primary` (#27545c) because
+  `.premium-root .premium-footer{background:var(--premium-primary)}` (premium.css line ~326)
+  overrides the earlier `.premium-footer{background:#16302f}`. Trust the computed colour, not the literal.
+- Standard + premium footers therefore share #27545c; both match the canvas.
+- Rule: root canvas must ALWAYS equal the footer colour actually rendered for that route.
