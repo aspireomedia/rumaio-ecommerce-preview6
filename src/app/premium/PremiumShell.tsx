@@ -47,13 +47,13 @@ export function PremiumHeader({ store }: { store: PremiumStore }) {
     e.preventDefault();
     const hit = premiumCatalog.find((p) => p.name.toLowerCase().includes(query.toLowerCase()));
     if (hit) router.push(`/premium/product/${hit.id}`);
-    else store.setNotice("No piece found. Try another search.");
+    else store.setNotice("Produk belum ditemukan. Coba kata kunci lain.");
   };
   return (
     <>
       <header className="premium-header">
         <div className="premium-shell premium-header-row">
-          <button className="premium-menu-btn" aria-label="Open menu" onClick={() => setOpen(true)}><Menu /></button>
+          <button className="premium-menu-btn" aria-label="Buka menu" onClick={() => setOpen(true)}><Menu /></button>
           <Link href="/premium" className="premium-wordmark">Casen Living<small>WHERE SPACE BECOMES HOME</small></Link>
           <nav className="premium-nav">
             {premiumNav.slice(0, 5).map(([slug, label]) => <Link key={slug} href={`/premium/${slug}`}>{label}</Link>)}
@@ -61,21 +61,21 @@ export function PremiumHeader({ store }: { store: PremiumStore }) {
             <Link href="/premium/faq">FAQ</Link>
           </nav>
           <form className="premium-search" onSubmit={submit}>
-            <input aria-label="Search Casen Living" placeholder="Search furniture..." value={query} onChange={(e) => setQuery(e.target.value)} />
-            <button aria-label="Search"><Search size={16} /></button>
+            <input aria-label="Cari produk Casen Living" placeholder="Cari furniture..." value={query} onChange={(e) => setQuery(e.target.value)} />
+            <button aria-label="Cari"><Search size={16} /></button>
           </form>
           <div className="premium-actions">
             <Link href="/premium/wishlist" aria-label="Wishlist"><Heart size={19} />{store.wishes.length > 0 && <b>{store.wishes.length}</b>}</Link>
-            <Link href="/premium/cart" aria-label="Cart"><ShoppingBag size={19} />{cartCount > 0 && <b>{cartCount}</b>}</Link>
+            <Link href="/premium/cart" aria-label="Keranjang"><ShoppingBag size={19} />{cartCount > 0 && <b>{cartCount}</b>}</Link>
           </div>
         </div>
       </header>
       <div className={`premium-drawer ${open ? "open" : ""}`} role="dialog" aria-modal="true" aria-label="Casen Living menu">
         <div>
-          <button aria-label="Close menu" onClick={() => setOpen(false)}><X /></button>
+          <button aria-label="Tutup menu" onClick={() => setOpen(false)}><X /></button>
           {premiumNav.map(([slug, label]) => <Link key={slug} href={`/premium/${slug}`} onClick={() => setOpen(false)}>{label}</Link>)}
         </div>
-        <button className="premium-drawer-back" aria-label="Close menu" onClick={() => setOpen(false)} />
+        <button className="premium-drawer-back" aria-label="Tutup menu" onClick={() => setOpen(false)} />
       </div>
       {store.notice && <div className="premium-toast" role="status">{store.notice}</div>}
     </>
@@ -98,8 +98,9 @@ export function PremiumFooter() {
           <h3>Support</h3>
           <Link href="/premium/faq">FAQ</Link>
           <Link href="/premium/about">About Casen Living</Link>
-          <Link href="/premium/cart">Cart</Link>
+          <Link href="/premium/cart">Keranjang</Link>
           <Link href="/premium/wishlist">Wishlist</Link>
+          <Link href="#kebijakan-privasi">Kebijakan Privasi</Link>
         </div>
         <div>
           <h3>Delivery</h3>
@@ -107,8 +108,8 @@ export function PremiumFooter() {
         </div>
       </div>
       <div className="premium-shell premium-footer-bottom">
-        <span>&copy; 2026 Casen Living.</span>
-        <span>Where Space Becomes Home.</span>
+        <span>&copy; 2026 Casen Living. Semua hak dilindungi.</span>
+        <span><a href="#kebijakan-privasi">Kebijakan Privasi</a> · Where Space Becomes Home.</span>
       </div>
     </footer>
   );
@@ -130,7 +131,7 @@ export function PremiumProductCard({ product, store }: { product: PremiumProduct
         <Link href={`/premium/product/${product.id}`}><h3>{product.name}</h3></Link>
         <p className="premium-card-rating"><Star size={13} fill="currentColor" /> {product.rating} <small>({product.reviews})</small></p>
         <div className="premium-card-price"><strong>{premiumFormatPrice(product.price)}</strong>{product.oldPrice && <del>{premiumFormatPrice(product.oldPrice)}</del>}</div>
-        <button className="premium-card-add" onClick={() => store.add(product.id)}>Add to Cart</button>
+        <button className="premium-card-add" onClick={() => store.add(product.id)}>Tambah ke Keranjang</button>
       </div>
     </article>
   );

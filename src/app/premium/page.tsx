@@ -14,18 +14,29 @@ const rooms = [
 const featuredIds = ["luna-sofa", "bed-frame-laras-king-upholstered", "dining-table-gading-round-120", "desk-rakha-teak-130", "cabinet-lara-wide", "sofa-ranu-3s"];
 const featured = featuredIds.map((id) => premiumCatalog.find((p) => p.id === id)).filter(Boolean) as typeof premiumCatalog;
 
-const lookIds = ["sofa-ranu-3s", "coffee-table-riko-round", "armchair-sena-lounge"];
-const lookProducts = lookIds.map((id) => premiumCatalog.find((p) => p.id === id)).filter(Boolean) as typeof premiumCatalog;
+const promos = [
+  { kicker: "Living Collection", title: "Designed for Everyday Comfort", href: "/premium/living", image: "https://images.pexels.com/photos/6758245/pexels-photo-6758245.jpeg?auto=compress&cs=tinysrgb&h=650&w=1600" },
+  { kicker: "Dining Collection", title: "Made for Moments Together", href: "/premium/dining", image: "https://images.pexels.com/photos/7180275/pexels-photo-7180275.jpeg?auto=compress&cs=tinysrgb&h=650&w=1600" },
+  { kicker: "Bedroom Collection", title: "Comfort That Feels Like Home", href: "/premium/bedroom", image: "https://images.pexels.com/photos/30287057/pexels-photo-30287057.jpeg?auto=compress&cs=tinysrgb&h=650&w=1600" },
+];
+
+const homeFaqs = [
+  ["Bagaimana cara melakukan pemesanan?", "Jelajahi koleksi, pilih produk yang Anda sukai, lalu tambahkan ke keranjang. Hubungi tim kami apabila Anda membutuhkan bantuan sebelum melanjutkan."],
+  ["Berapa lama waktu pengiriman?", "Waktu pengiriman bergantung pada produk dan lokasi. Hubungi tim kami untuk informasi yang sesuai dengan pesanan Anda."],
+  ["Apakah tersedia layanan perakitan?", "Hubungi tim kami untuk menanyakan ketersediaan bantuan perakitan untuk produk dan area Anda."],
+  ["Bagaimana jika produk tiba dalam kondisi rusak?", "Hubungi tim kami dengan foto produk dan kemasannya agar kami dapat membantu langkah selanjutnya."],
+  ["Apakah Casen Living melayani kebutuhan proyek atau bisnis?", "Ya. Hubungi tim kami untuk mendiskusikan kebutuhan furniture untuk proyek maupun bisnis Anda."],
+];
 
 export default function PremiumHome() {
   const store = usePremiumStore();
   return (
     <>
-      <a className="premium-skip" href="#premium-content">Skip to content</a>
+      <a className="premium-skip" href="#premium-content">Lewati ke konten</a>
       <PremiumHeader store={store} />
       <main id="premium-content">
         <section className="premium-hero" aria-labelledby="premium-hero-title">
-          <Image src="https://images.pexels.com/photos/6758245/pexels-photo-6758245.jpeg?auto=compress&cs=tinysrgb&h=1200&w=1920" alt="Living room with a low sofa and layered cushions" fill priority sizes="100vw" />
+          <Image src="https://images.pexels.com/photos/6758245/pexels-photo-6758245.jpeg?auto=compress&cs=tinysrgb&h=1200&w=1920" alt="Ruang keluarga dengan sofa rendah dan bantal berlapis" fill priority sizes="100vw" />
           <div className="premium-hero-copy">
             <span>Casen Living</span>
             <h1 id="premium-hero-title">Beautiful Furniture for the Way You Actually Live</h1>
@@ -60,35 +71,57 @@ export default function PremiumHome() {
           </div>
         </section>
 
-        <section className="premium-section">
-          <div className="premium-shell premium-look">
-            <div className="premium-look-image">
-              <Image src="https://images.pexels.com/photos/6480707/pexels-photo-6480707.jpeg?auto=compress&cs=tinysrgb&h=1000&w=900" alt="Styled living room scene" fill sizes="(max-width:1024px) 100vw, 50vw" />
+        <section className="premium-about-home">
+          <div className="premium-shell premium-about-home-inner">
+            <div>
+              <p className="premium-kicker">About Casen Living</p>
+              <h2 className="premium-serif">Where Space Becomes Home.</h2>
             </div>
-            <div className="premium-look-copy">
-              <h2 className="premium-serif" style={{ marginBottom: 16 }}>Shop the Look</h2>
-              <p className="lede">A warm, minimal living room: a low sofa, a marble coffee table, and a lounge chair that finishes the corner. Recreate the whole look at home.</p>
-              {lookProducts.map((p) => (
-                <Link key={p.id} href={`/premium/product/${p.id}`} className="premium-look-item">
-                  <Image src={p.image} width={64} height={64} alt={p.name} />
-                  <div>
-                    <h4>{p.name}</h4>
-                    <strong>{new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR", maximumFractionDigits: 0 }).format(p.price)}</strong>
-                  </div>
-                </Link>
-              ))}
+            <div>
+              <p>Terinspirasi dari Casa, Casen Living melihat rumah sebagai ruang yang benar-benar hidup: tempat untuk beristirahat, berkumpul, bekerja, bertumbuh, dan menikmati keseharian.</p>
+              <Link href="/premium/about">Selengkapnya tentang Casen Living <span aria-hidden="true">→</span></Link>
             </div>
+          </div>
+        </section>
+
+        <section className="premium-promo-section">
+          <div className="premium-shell premium-promo-stack">
+            {promos.map((promo) => (
+              <Link key={promo.kicker} href={promo.href} className="premium-wide-promo">
+                <Image src={promo.image} alt={promo.title} fill sizes="(max-width:720px) 100vw, 1280px" />
+                <div><p>{promo.kicker}</p><h2 className="premium-serif">{promo.title}</h2></div>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        <section className="premium-philosophy premium-section">
+          <div className="premium-shell premium-philosophy-inner">
+            <p className="premium-kicker">Brand Philosophy</p>
+            <h2 className="premium-serif">Inspired by Casa — Reimagined for Living.</h2>
+            <p>Casa adalah akar inspirasi kami: rumah sebagai ruang yang memiliki makna. Casen memberi identitas yang lebih modern dan khas, sementara Living memperluas maknanya melampaui tempat tinggal — menjadi ruang untuk istirahat, kebersamaan, kerja, dan kehidupan sehari-hari.</p>
+            <p className="premium-essence-line">Modern <i>•</i> Home <i>•</i> Comfort <i>•</i> Everyday Living <i>•</i> Versatile</p>
+            <strong>Where Space Becomes Home.</strong>
           </div>
         </section>
 
         <section className="premium-craft premium-section">
           <div className="premium-shell">
-            <h2 className="premium-serif" style={{ fontSize: 32, marginBottom: 18 }}>Thoughtfully Crafted</h2>
+            <h2 className="premium-serif">Thoughtfully Crafted</h2>
             <p className="premium-craft-copy">Every piece at Casen Living is chosen and finished with intention. We work with skilled makers to create furniture that fits real, everyday life, not just a photograph.</p>
             <div className="premium-craft-stats">
               <div><div>1 Week</div><p>Delivery Timeline</p></div>
               <div><div>100%</div><p>Thoughtful Selection</p></div>
               <div><div>Premium</div><p>Materials &amp; Design</p></div>
+            </div>
+          </div>
+        </section>
+
+        <section className="premium-home-faq premium-section">
+          <div className="premium-shell">
+            <div className="premium-home-faq-head"><div><p className="premium-kicker">Need Help?</p><h2 className="premium-serif">Frequently Asked Questions</h2></div><Link href="/premium/faq">Lihat Semua FAQ <span aria-hidden="true">→</span></Link></div>
+            <div className="premium-home-faq-list">
+              {homeFaqs.map(([question, answer]) => <details key={question}><summary>{question}</summary><p>{answer}</p></details>)}
             </div>
           </div>
         </section>
