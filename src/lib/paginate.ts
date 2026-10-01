@@ -8,17 +8,29 @@ export function paginate<T>(items: T[], page: number, pageSize: number) {
   return { pageItems: items.slice(start, end), total, totalPages, safePage, start, end };
 }
 
-export const PAGE_SIZE_OPTIONS = [20, 40, 60, 100] as const;
-export type PageSize = (typeof PAGE_SIZE_OPTIONS)[number];
+// Two page-size sets, chosen per surface by the catalogue grid's column count so every
+// page ends on a complete row. A 3-column catalogue needs multiples of 3; a 4-column one
+// needs multiples of 4. Both include 60 so the shared value stays legal on either layout.
+export const CATALOGUE_PAGE_SIZES_3COL = [18, 36, 60, 90] as const;
+export const CATALOGUE_PAGE_SIZES_4COL = [20, 40, 60, 100] as const;
+
+// Kept for backwards compatibility with any import expecting the 4-column default set.
+export const PAGE_SIZE_OPTIONS = CATALOGUE_PAGE_SIZES_4COL;
+export type PageSize = (typeof CATALOGUE_PAGE_SIZES_3COL)[number] | (typeof CATALOGUE_PAGE_SIZES_4COL)[number];
+
+export type PageSizeOptions = readonly number[];
 
 export function parsePageParam(value: string | null): number {
   const n = Number(value);
   return Number.isFinite(n) && n >= 1 ? Math.floor(n) : 1;
 }
 
-export function parsePageSizeParam(value: string | null): PageSize {
+// Validates the ?limit= value against the options the CURRENT surface offers, and falls
+// back to that surface's default. Passing the surface's list keeps a 3-column catalogue
+// from ever adopting a 4-column-only size (and vice-versa) from a stale shared link.
+export function parsePageSizeParam(value: string | null, options: PageSizeOptions = PAGE_SIZE_OPTIONS): PageSize {
   const n = Number(value);
-  return (PAGE_SIZE_OPTIONS as readonly number[]).includes(n) ? (n as PageSize) : 20;
+  return options.includes(n) ? (n as PageSize) : (options[0] as PageSize);
 }
 
 // Builds the collapsed page-number list: 1 2 3 ... 8, never dumping dozens of numbers.

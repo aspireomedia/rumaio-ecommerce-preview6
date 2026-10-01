@@ -25,3 +25,16 @@ Bottom overscroll exposed the UA default white below the footer because `html` h
   overrides the earlier `.premium-footer{background:#16302f}`. Trust the computed colour, not the literal.
 - Standard + premium footers therefore share #27545c; both match the canvas.
 - Rule: root canvas must ALWAYS equal the footer colour actually rendered for that route.
+
+## Page-size per grid column count (2026-10)
+Catalogue items-per-page must be divisible by the DESKTOP column count so pages end on
+complete rows. Two sets now live in src/lib/paginate.ts and each surface picks one:
+  - CATALOGUE_PAGE_SIZES_3COL = [18,36,60,90]  (default 18) -> 3-col grids
+  - CATALOGUE_PAGE_SIZES_4COL = [20,40,60,100] (default 20) -> 4-col grids
+Wired: /premium/[room] (Premium) = 3COL; /products (Standard) = 4COL.
+PageSizeSelect takes an `options` prop and parsePageSizeParam takes an options list, so a
+surface can never adopt the other layout's sizes from a stale shared link.
+Grid truth (desktop): .premium-products=3col, .catalog-grid=4col. Do NOT assume the page-size
+list from the route name — check the grid's computed column count.
+Note: /premium/[room] catalogues can hold fewer items than a size (e.g. 33 in living), so a
+large size legitimately renders everything it has; that is correct capping, not a bug.

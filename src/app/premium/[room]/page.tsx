@@ -4,7 +4,7 @@ import { notFound, useParams, useRouter, usePathname, useSearchParams } from "ne
 import { premiumByRoom } from "@/lib/premium-catalog";
 import { PremiumFooter, PremiumHeader, PremiumProductCard, roomLabels, usePremiumStore } from "../PremiumShell";
 import { Pagination, PageSizeSelect, ListingRangeLabel } from "@/components/Pagination";
-import { paginate, PageSize, parsePageParam, parsePageSizeParam } from "@/lib/paginate";
+import { paginate, PageSize, parsePageParam, parsePageSizeParam, CATALOGUE_PAGE_SIZES_3COL } from "@/lib/paginate";
 import { SORT_OPTIONS, sortProducts } from "@/lib/sort";
 const validRooms = ["living", "dining", "bedroom", "office", "storage"];
 export default function PremiumRoomPage() { return <Suspense fallback={null}><PremiumRoomContent /></Suspense>; }
@@ -13,7 +13,7 @@ function PremiumRoomContent() {
   const searchParams = useSearchParams(); const router = useRouter(); const pathname = usePathname();
   // URL is the single source of truth for page/limit so any view is a shareable deep link.
   const urlPage = parsePageParam(searchParams.get("page"));
-  const urlPageSize = parsePageSizeParam(searchParams.get("limit"));
+  const urlPageSize = parsePageSizeParam(searchParams.get("limit"), CATALOGUE_PAGE_SIZES_3COL);
   const [page, setPage] = useState(urlPage);
   const [pageSize, setPageSize] = useState<PageSize>(urlPageSize);
   const [sort, setSort] = useState("featured");
@@ -37,5 +37,5 @@ function PremiumRoomContent() {
   // Out-of-range pages resolve to a valid page. Kept as local-only clamping so a shared
   // link is never silently rewritten; the grid still renders correctly either way.
   if (safePage !== page) setPage(safePage);
-  return <><PremiumHeader store={store} /><main><section className="premium-listing-head"><div className="premium-shell"><h1 className="premium-serif">{roomLabels[room]}</h1><p>Pilihan untuk {roomLabels[room].toLowerCase()}, dipilih untuk material berkualitas dan kenyamanan sehari-hari.</p></div></section><section id="premium-room-listing" className="premium-shell premium-listing-grid">{products.length > 0 ? <><div className="premium-listing-toolbar"><ListingRangeLabel total={total} start={start} end={end}/><div className="premium-listing-toolbar-controls"><PageSizeSelect pageSize={pageSize} onPageSizeChange={(size) => pushUrl(1, size)}/><label className="sort-control">Urutkan <select value={sort} onChange={(e) => setSort(e.target.value)}>{SORT_OPTIONS.map((o) => <option key={o.value} value={o.value}>{o.label}</option>)}</select></label></div></div><div className="premium-products">{pageItems.map((p) => <PremiumProductCard key={p.id} product={p} store={store} />)}</div><Pagination page={safePage} totalPages={totalPages} onPageChange={(next) => pushUrl(next, pageSize)} className="premium-pagination" scrollTargetId="premium-room-listing"/></> : <div className="premium-listing-empty">Belum ada produk tersedia untuk ruang ini.</div>}</section></main><PremiumFooter /></>;
+  return <><PremiumHeader store={store} /><main><section className="premium-listing-head"><div className="premium-shell"><h1 className="premium-serif">{roomLabels[room]}</h1><p>Pilihan untuk {roomLabels[room].toLowerCase()}, dipilih untuk material berkualitas dan kenyamanan sehari-hari.</p></div></section><section id="premium-room-listing" className="premium-shell premium-listing-grid">{products.length > 0 ? <><div className="premium-listing-toolbar"><ListingRangeLabel total={total} start={start} end={end}/><div className="premium-listing-toolbar-controls"><PageSizeSelect pageSize={pageSize} options={CATALOGUE_PAGE_SIZES_3COL} onPageSizeChange={(size) => pushUrl(1, size)}/><label className="sort-control">Urutkan <select value={sort} onChange={(e) => setSort(e.target.value)}>{SORT_OPTIONS.map((o) => <option key={o.value} value={o.value}>{o.label}</option>)}</select></label></div></div><div className="premium-products">{pageItems.map((p) => <PremiumProductCard key={p.id} product={p} store={store} />)}</div><Pagination page={safePage} totalPages={totalPages} onPageChange={(next) => pushUrl(next, pageSize)} className="premium-pagination" scrollTargetId="premium-room-listing"/></> : <div className="premium-listing-empty">Belum ada produk tersedia untuk ruang ini.</div>}</section></main><PremiumFooter /></>;
 }
