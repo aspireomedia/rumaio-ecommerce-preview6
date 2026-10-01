@@ -90,6 +90,7 @@ This preview has **not** been reseeded from the shared pack (`/home/ubuntu/aspir
   - Final Premium homepage order: Header → Hero → Brand Philosophy → Shop by Room → About Casen Living → Featured Pieces → 3 stacked promo banners → Thoughtfully Crafted → FAQ → Footer.
   - Supplier Berdasarkan Wilayah (standard) now sits on a Pearl Gray `#e2dfdc` section background.
   - Verified via local production build: zero "Better Space" occurrences in rendered DOM across 12+ standard/Premium routes, zero horizontal overflow, zero console/page errors, functional add-to-cart and category navigation still work, Premium section order confirmed via DOM traversal and visual inspection.
+- Combined micro patch (2026-10-01), standard only: Supplier Berdasarkan Wilayah section reconfirmed on Pearl Gray `#e2dfdc`; hero heading white glow strengthened and reconfirmed visually; two specific Kategori Pilihan cards (Lemari & Penyimpanan, Dekorasi Rumah — 5th/6th position) given a dedicated `rgba(255,255,255,.45)` lightening overlay via `nth-child` selectors so only those two cards are affected; all other category cards and `/premium` left untouched (confirmed by computed-style diff showing `rgba(0,0,0,0)` on an unrelated card).
 - Dials: ENERGY 2 / RHYTHM 2 / MOTION 1. Only functional hover/menu feedback is used; no decorative looping motion.
 - Every homepage action either goes to an existing product/category route, scrolls to an existing section, opens/closes the mobile menu, changes product tabs, adds to cart/wishlist, or provides inline form confirmation.
 

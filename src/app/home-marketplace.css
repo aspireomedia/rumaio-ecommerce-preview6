@@ -57,4 +57,8 @@
 .market-promo:after{background:linear-gradient(90deg,rgb(39 84 92 / .55) 0%,rgb(39 84 92 / .14) 55%,transparent 85%)}
 .market-collection-banners>a:after{background:linear-gradient(90deg,rgb(39 84 92 / .58) 0%,rgb(39 84 92 / .16) 50%,transparent 85%)}
 .market-tiles a:after{background:linear-gradient(180deg,transparent 40%,rgb(39 84 92 / .55) 100%)}
+
+/* Micro patch: lighten the two heavier category photos (Lemari & Penyimpanan, Dekorasi Rumah) only. */
+.market-categories a:nth-child(5)>div::after,
+.market-categories a:nth-child(6)>div::after{content:"";position:absolute;inset:0;background:rgb(255 255 255 / .45)}
 .market-promo small,.market-promo h3,.market-collection h2,.market-collection p,.market-collection span,.market-tiles b{text-shadow:0 1px 4px rgb(0 0 0 / .65)}
