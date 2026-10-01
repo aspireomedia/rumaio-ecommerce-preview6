@@ -8,7 +8,7 @@ export function paginate<T>(items: T[], page: number, pageSize: number) {
   return { pageItems: items.slice(start, end), total, totalPages, safePage, start, end };
 }
 
-export const PAGE_SIZE_OPTIONS = [25, 50, 100] as const;
+export const PAGE_SIZE_OPTIONS = [20, 40, 60, 100] as const;
 export type PageSize = (typeof PAGE_SIZE_OPTIONS)[number];
 
 export function parsePageParam(value: string | null): number {
@@ -18,7 +18,7 @@ export function parsePageParam(value: string | null): number {
 
 export function parsePageSizeParam(value: string | null): PageSize {
   const n = Number(value);
-  return (PAGE_SIZE_OPTIONS as readonly number[]).includes(n) ? (n as PageSize) : 25;
+  return (PAGE_SIZE_OPTIONS as readonly number[]).includes(n) ? (n as PageSize) : 20;
 }
 
 // Builds the collapsed page-number list: 1 2 3 ... 8, never dumping dozens of numbers.
