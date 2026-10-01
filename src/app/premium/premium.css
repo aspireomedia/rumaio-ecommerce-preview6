@@ -369,3 +369,28 @@
   .premium-root .premium-actions a svg { width: 18px; height: 18px; }
   .premium-root .premium-actions b { top: 2px; right: 0; min-width: 14px; height: 14px; }
 }
+
+/* Premium room listing: range text + page-size selector + pagination (premium palette) */
+.premium-listing-toolbar{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:26px;color:var(--premium-muted);font-size:13px}
+.premium-listing-toolbar .page-size-select{display:inline-flex;align-items:center;gap:8px;color:var(--premium-muted);font-size:13px}
+.premium-listing-toolbar .page-size-select select{border:1px solid var(--premium-line);background:var(--premium-surface);padding:.5rem .7rem;color:var(--premium-ink);font-size:13px}
+.premium-pagination{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:42px;flex-wrap:wrap}
+.premium-pagination .pagination-prev,.premium-pagination .pagination-next{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--premium-line);background:var(--premium-surface);color:var(--premium-primary);padding:.6rem .95rem;font-size:12px;font-weight:700}
+.premium-pagination .pagination-prev:disabled,.premium-pagination .pagination-next:disabled{opacity:.4;cursor:not-allowed}
+.premium-pagination .pagination-prev:hover:not(:disabled),.premium-pagination .pagination-next:hover:not(:disabled){border-color:var(--premium-primary);color:var(--premium-primary)}
+.premium-pagination .pagination-numbers{display:flex;align-items:center;gap:4px}
+.premium-pagination .pagination-page{min-width:36px;height:36px;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--premium-line);background:var(--premium-surface);color:var(--premium-primary);font-size:12px;font-weight:700}
+.premium-pagination .pagination-page.active{background:var(--premium-primary);border-color:var(--premium-primary);color:#fff}
+.premium-pagination .pagination-page:hover:not(.active){border-color:var(--premium-primary);color:var(--premium-primary)}
+.premium-pagination .pagination-ellipsis{padding:0 4px;color:var(--premium-muted);font-size:12px}
+.premium-pagination .pagination-mobile-indicator{display:none;font-size:12px;font-weight:700;color:var(--premium-primary)}
+@media (max-width:640px){
+  .premium-pagination .pagination-numbers{display:none}
+  .premium-pagination .pagination-mobile-indicator{display:inline-flex}
+  .premium-pagination .pagination-prev-label,.premium-pagination .pagination-next-label{display:none}
+}
+
+/* Premium room listing: themed selects (custom chevron, focus ring) */
+.premium-listing-toolbar .page-size-select select{appearance:none;-webkit-appearance:none;background:var(--premium-surface) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path d='M1 1l4 4 4-4' fill='none' stroke='%23715f4b' stroke-width='1.5' stroke-linecap='round'/></svg>") no-repeat right .65rem center;padding:.5rem 1.9rem .5rem .75rem;line-height:1.2;cursor:pointer}
+.premium-listing-toolbar .page-size-select select:hover{border-color:var(--premium-secondary)}
+.premium-listing-toolbar .page-size-select select:focus-visible{outline:2px solid var(--premium-secondary);outline-offset:1px}
