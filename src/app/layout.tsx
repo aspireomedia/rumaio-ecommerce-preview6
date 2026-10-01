@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { DM_Sans, Playfair_Display } from "next/font/google";
 import "./globals.css";
+import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
 
 const dmSans = DM_Sans({ variable: "--font-sans", subsets: ["latin"] });
 const playfair = Playfair_Display({ variable: "--font-serif", subsets: ["latin"] });
@@ -11,5 +12,5 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="id" className={`${dmSans.variable} ${playfair.variable}`}><body>{children}</body></html>;
+  return <html lang="id" className={`${dmSans.variable} ${playfair.variable}`}><body>{children}<FloatingWhatsApp/></body></html>;
 }
