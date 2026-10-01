@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./premium.css";
 
 export const metadata: Metadata = {
-  title: "Casen Living | Premium Furniture",
-  description: "Beautiful furniture for the way you actually live. Inspired by Casa, reimagined for living.",
+  title: "Casen Living | Furniture Premium",
+  description: "Furniture berkualitas untuk cara Anda menjalani kehidupan. Terinspirasi dari Casa, dihadirkan kembali untuk kehidupan.",
 };
 
 export default function PremiumLayout({ children }: { children: React.ReactNode }) {

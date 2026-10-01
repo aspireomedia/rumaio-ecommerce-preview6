@@ -336,7 +336,7 @@
   .premium-root .premium-header-row { gap: 8px; }
   .premium-root .premium-menu-btn { display: grid; place-items: center; flex: 0 0 44px; }
   .premium-root .premium-wordmark { min-width: 0; flex: 0 1 auto; font-size: 21px; }
-  .premium-root .premium-wordmark small { display: none; }
+  .premium-root .premium-wordmark small { display: inline-block; width: max-content; max-width: 100%; margin-top: 3px; padding: 2px 4px; font-size: 5.5px; letter-spacing: .07em; line-height: 1.1; background: var(--premium-secondary); color: var(--premium-primary); }
   .premium-root .premium-search { display: flex; flex: 1 1 auto; min-width: 0; height: 40px; }
   .premium-root .premium-search input { min-width: 0; padding: 0 8px; font-size: 11px; }
   .premium-root .premium-search button { width: 40px; flex: 0 0 40px; }
@@ -359,6 +359,7 @@
   .premium-root .premium-menu-btn { width: 34px; height: 40px; flex-basis: 34px; padding: 0; }
   .premium-root .premium-menu-btn svg { width: 18px; height: 18px; }
   .premium-root .premium-wordmark { flex: 0 0 72px; font-size: 18px; line-height: .95; white-space: normal; }
+  .premium-root .premium-wordmark small { display: inline-block; width: max-content; max-width: 100%; margin-top: 3px; padding: 2px 4px; font-size: 5.5px; letter-spacing: .07em; line-height: 1.1; background: var(--premium-secondary); color: var(--premium-primary); }
   .premium-root .premium-search { flex: 1 1 128px; min-width: 112px; }
   .premium-root .premium-actions { gap: 2px; }
   .premium-root .premium-actions a { width: 30px; height: 40px; }
