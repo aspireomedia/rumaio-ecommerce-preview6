@@ -27,5 +27,5 @@ const states = {
 
 export function ErrorExperience({ state = "unexpected", reset }: { state?: string; reset?: () => void }) {
   const [Icon, title, detail, action, href] = states[(state in states ? state : "unexpected") as State];
-  return <main className="error-page"><section className="error-card" role="alert"><Icon aria-hidden="true" size={42}/><p>PEMBARUAN BETTER SPACE</p><h1>{title}</h1><span>{detail}</span><div>{href === "retry" ? <button onClick={() => reset ? reset() : window.location.reload()}><RefreshCw size={16}/>{action}</button> : <Link href={href}>{action}</Link>}<Link className="error-secondary" href="/">Kembali ke beranda</Link></div></section></main>;
+  return <main className="error-page"><section className="error-card" role="alert"><Icon aria-hidden="true" size={42}/><p>PEMBARUAN CASEN LIVING</p><h1>{title}</h1><span>{detail}</span><div>{href === "retry" ? <button onClick={() => reset ? reset() : window.location.reload()}><RefreshCw size={16}/>{action}</button> : <Link href={href}>{action}</Link>}<Link className="error-secondary" href="/">Kembali ke beranda</Link></div></section></main>;
 }

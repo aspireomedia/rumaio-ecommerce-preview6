@@ -6,8 +6,8 @@ const dmSans = DM_Sans({ variable: "--font-sans", subsets: ["latin"] });
 const playfair = Playfair_Display({ variable: "--font-serif", subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Better Space | Furniture Modern untuk Setiap Ruang",
-  description: "Temukan furniture modern untuk rumah, kantor, dan kebutuhan bisnis Anda di Better Space.",
+  title: "Casen Living | Furniture Modern untuk Setiap Ruang",
+  description: "Temukan furniture modern untuk rumah, kantor, dan kebutuhan bisnis Anda di Casen Living.",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

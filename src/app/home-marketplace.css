@@ -47,3 +47,14 @@
 #market-footer .market-foot-grid p,#market-footer .market-foot-grid>div:not(:first-child)>a{color:var(--color-neutral-light)!important;font-weight:600}
 #market-footer .market-bottom a{font-weight:700;text-decoration:underline;text-underline-offset:2px}
 @media(max-width:600px){.market-utility{font-size:10px}.market-nav>.market-shell{padding-right:32px;mask-image:linear-gradient(90deg,#000 calc(100% - 28px),transparent)}.market-hero a{min-height:39px;padding-inline:16px}.market-quote input,.market-quote select,.market-quote textarea{color:var(--color-primary);background:var(--color-surface)}}
+
+/* Visual correction patch: natural image color variety restored; localized gradients only near text. */
+#regions{background:var(--color-neutral-light)}
+#regions .market-regions{border-color:var(--color-primary)}
+#regions .market-regions article{border-color:var(--color-primary)}
+#regions .market-regions b,#regions .market-regions span{color:var(--color-primary)}
+.market-hero h1{text-shadow:0 0 14px rgb(255 255 255 / .9),0 0 28px rgb(255 255 255 / .6),0 2px 1px rgb(255 255 255 / .8)}
+.market-promo:after{background:linear-gradient(90deg,rgb(39 84 92 / .55) 0%,rgb(39 84 92 / .14) 55%,transparent 85%)}
+.market-collection-banners>a:after{background:linear-gradient(90deg,rgb(39 84 92 / .58) 0%,rgb(39 84 92 / .16) 50%,transparent 85%)}
+.market-tiles a:after{background:linear-gradient(180deg,transparent 40%,rgb(39 84 92 / .55) 100%)}
+.market-promo small,.market-promo h3,.market-collection h2,.market-collection p,.market-collection span,.market-tiles b{text-shadow:0 1px 4px rgb(0 0 0 / .65)}

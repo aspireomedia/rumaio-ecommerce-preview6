@@ -48,6 +48,16 @@ export default function PremiumHome() {
           </div>
         </section>
 
+        <section className="premium-philosophy premium-section">
+          <div className="premium-shell premium-philosophy-inner">
+            <p className="premium-kicker">Filosofi Brand</p>
+            <h2 className="premium-serif">Terinspirasi dari Casa, Dihadirkan Kembali untuk Kehidupan.</h2>
+            <p>Casa adalah akar inspirasi kami: rumah sebagai ruang yang memiliki makna. Casen memberi identitas yang lebih modern dan khas, sementara Living memperluas maknanya melampaui tempat tinggal, menjadi ruang untuk istirahat, kebersamaan, kerja, dan kehidupan sehari-hari.</p>
+            <p className="premium-essence-line">Modern <i>•</i> Rumah <i>•</i> Kenyamanan <i>•</i> Hidup Sehari-hari <i>•</i> Serbaguna</p>
+            <strong>Di mana Ruang Menjadi Rumah.</strong>
+          </div>
+        </section>
+
         <section className="premium-section">
           <div className="premium-shell">
             <div className="premium-section-head"><h2 className="premium-serif">Belanja Berdasarkan Ruang</h2></div>
@@ -58,15 +68,6 @@ export default function PremiumHome() {
                   <h3 className="premium-serif">{room.name}</h3>
                 </Link>
               ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="premium-section tight">
-          <div className="premium-shell">
-            <div className="premium-section-head"><h2 className="premium-serif">Pilihan Unggulan</h2></div>
-            <div className="premium-products">
-              {featured.map((p) => <PremiumProductCard key={p.id} product={p} store={store} />)}
             </div>
           </div>
         </section>
@@ -84,6 +85,15 @@ export default function PremiumHome() {
           </div>
         </section>
 
+        <section className="premium-section tight">
+          <div className="premium-shell">
+            <div className="premium-section-head"><h2 className="premium-serif">Pilihan Unggulan</h2></div>
+            <div className="premium-products">
+              {featured.map((p) => <PremiumProductCard key={p.id} product={p} store={store} />)}
+            </div>
+          </div>
+        </section>
+
         <section className="premium-promo-section">
           <div className="premium-shell premium-promo-stack">
             {promos.map((promo) => (
@@ -92,16 +102,6 @@ export default function PremiumHome() {
                 <div><p>{promo.kicker}</p><h2 className="premium-serif">{promo.title}</h2></div>
               </Link>
             ))}
-          </div>
-        </section>
-
-        <section className="premium-philosophy premium-section">
-          <div className="premium-shell premium-philosophy-inner">
-            <p className="premium-kicker">Filosofi Brand</p>
-            <h2 className="premium-serif">Terinspirasi dari Casa, Dihadirkan Kembali untuk Kehidupan.</h2>
-            <p>Casa adalah akar inspirasi kami: rumah sebagai ruang yang memiliki makna. Casen memberi identitas yang lebih modern dan khas, sementara Living memperluas maknanya melampaui tempat tinggal, menjadi ruang untuk istirahat, kebersamaan, kerja, dan kehidupan sehari-hari.</p>
-            <p className="premium-essence-line">Modern <i>•</i> Rumah <i>•</i> Kenyamanan <i>•</i> Hidup Sehari-hari <i>•</i> Serbaguna</p>
-            <strong>Di mana Ruang Menjadi Rumah.</strong>
           </div>
         </section>
 
